@@ -28,24 +28,33 @@ st.write(
     "Predict obesity levels using demographic, dietary, and lifestyle information."
 )
 
-st.header("Personal Information")
+st.header("👤 Personal Information")
 
-# Age 
-age = st.number_input(
-    "Age",
-    min_value=10,
-    max_value=100,
-    value=25
-)
+# Age & Gender 
+col1, col2 = st.columns(2)
 
-# Gender
-gender = st.selectbox("Gender",["Male","Female"])
+with col1:
+    age = st.number_input(
+        "Age",
+        min_value=10,
+        max_value=100,
+        value=25
+    )
+
+with col2:
+    gender = st.selectbox(
+        "Gender",
+        ["Male", "Female"]
+    )
+
 gender_encoded = 1 if gender == "Male" else 0
 
 
-# Height
+# Height & weight 
+col1, col2 =st.columns(2)
 
-height = st.number_input(
+with col1:
+    height = st.number_input(
     "Height (meters)",
     min_value=1.0,
     max_value=2.5,
@@ -53,8 +62,8 @@ height = st.number_input(
     step=0.01
 )
 
-## Weight 
-weight =st.number_input(
+with col2: 
+    weight =st.number_input(
     "Weight (KG)",
     min_value=20.0,
     max_value=250.0,
@@ -62,12 +71,18 @@ weight =st.number_input(
     step=0.1
 )
 ##Bmi
+
+st.header("📈 Health Metrics")
+
 bmi = weight / (height ** 2)
 
-st.metric(
-    "BMI",
-    round(bmi, 2)
-)
+
+col1,col2 =st.columns(2)
+with col1:
+         st.metric(
+        "BMI",
+        f"{bmi:.2f}"
+    )
 
 
 if bmi < 18.5:
@@ -79,9 +94,19 @@ elif bmi < 30:
 else:
     bmi_category = "Obese"
 
-st.write(f"**BMI Category:** {bmi_category}")
+with col2:
+        st.metric(
+        "BMI Category",
+        bmi_category
+    )
+
+st.markdown("---")
+
+st.header("🍽️ Eating Habits")
 
 ## Family History
+
+
 
 family_history = st.selectbox(
     "Family History of Overweight",
@@ -119,6 +144,15 @@ ncp = st.slider(
     value=3.0,
     step=0.1
 )
+
+## Eating BEtween Meels
+
+caec = st.selectbox(
+    "How Often Do You Eat Between Meals?",
+    ["No", "Sometimes", "Frequently", "Always"]
+)
+
+st.header("🏃 Lifestyle Information")
 
 ## Daily Water Consumption
 
@@ -171,12 +205,7 @@ scc = st.selectbox(
 
 scc_encoded = 1 if scc == "Yes" else 0
 
-## Eating BEtween Meels
 
-caec = st.selectbox(
-    "How Often Do You Eat Between Meals?",
-    ["No", "Sometimes", "Frequently", "Always"]
-)
 
 caec_encoded = {
     "No": 0,
@@ -247,51 +276,170 @@ input_data = pd.DataFrame([{
 
 
 
+predict = st.button(
+    "🔍 Predict Obesity Level",
+    use_container_width=True
+)
 
-if st.button("Predict Obesity Level"):
+if predict:
 
     prediction = model.predict(input_data)
-
     probabilities = model.predict_proba(input_data)
 
     predicted_class = int(prediction[0])
 
     result = obesity_labels[predicted_class]
-
     confidence = probabilities.max() * 100
 
-    st.subheader("Prediction Results")
+    st.header("📊 Prediction Results")
 
     col1, col2 = st.columns(2)
 
     with col1:
         st.metric(
-            "Predicted Category",
-            result
+            label="Predicted Category",
+            value=result
         )
 
     with col2:
         st.metric(
-            "Confidence",
-            f"{confidence:.2f}%"
+            label="Confidence",
+            value=f"{confidence:.2f}%"
         )
 
+    st.header("📊 Health Assessment")
+
     if result == "Insufficient Weight":
+
         st.warning(
-            "Increase calorie intake through nutritious foods and consider strength training."
+            "⚠️ Increase calorie intake through nutritious foods and consider strength training."
         )
 
     elif result == "Normal Weight":
+
         st.success(
-            "Maintain your current lifestyle, balanced nutrition, and regular physical activity."
+            "✅ Maintain your current lifestyle, balanced nutrition, and regular physical activity."
         )
 
     elif result in ["Overweight Level I", "Overweight Level II"]:
+
         st.warning(
-            "Consider increasing physical activity and monitoring calorie intake."
+            "⚠️ Consider increasing physical activity and monitoring calorie intake."
         )
 
     else:
+
         st.error(
-            "Consult a healthcare professional and adopt a structured nutrition and exercise plan."
-       )
+            "🚨 Consult a healthcare professional and adopt a structured nutrition and exercise plan."
+        )
+
+    st.markdown("---")
+
+    st.header("🧠 AI Health Insights")
+
+    recommendations = []
+
+    # BMI Recommendations
+
+    if bmi < 18.5:
+        recommendations.append(
+            "Increase calorie intake through nutrient-dense foods."
+        )
+
+    elif bmi < 25:
+        recommendations.append(
+            "Maintain your current body weight through balanced nutrition."
+        )
+
+    elif bmi < 30:
+        recommendations.append(
+            "Consider a moderate calorie deficit to support healthy weight loss."
+        )
+
+    else:
+        recommendations.append(
+            "Focus on structured weight management through nutrition and exercise."
+        )
+
+    # Physical Activity Recommendations
+
+    if faf < 1:
+        recommendations.append(
+            "Increase physical activity levels to improve overall health and weight management."
+        )
+
+    elif faf < 2:
+        recommendations.append(
+            "Aim for at least 30 minutes of moderate exercise most days of the week."
+        )
+
+    else:
+        recommendations.append(
+            "Maintain your current physical activity routine."
+        )
+
+    # Water Intake Recommendations
+
+    if ch2o < 1.5:
+        recommendations.append(
+            "Increase daily water intake to at least 2 liters per day."
+        )
+
+    elif ch2o < 2.5:
+        recommendations.append(
+            "Your hydration level is adequate. Continue maintaining good water intake."
+        )
+
+    else:
+        recommendations.append(
+            "Excellent hydration habits. Continue drinking sufficient water daily."
+        )
+
+    # Prediction-Based Recommendations
+
+    if result == "Insufficient Weight":
+
+        recommendations.append(
+            "Focus on increasing calorie and protein intake through healthy foods."
+        )
+
+    elif result == "Normal Weight":
+
+        recommendations.append(
+            "Continue your current lifestyle to maintain a healthy weight."
+        )
+
+    elif result == "Overweight Level I":
+
+        recommendations.append(
+            "A moderate calorie deficit and increased activity can help prevent further weight gain."
+        )
+
+    elif result == "Overweight Level II":
+
+        recommendations.append(
+            "Consider a structured weight-loss plan combining nutrition and exercise."
+        )
+
+    elif result == "Obesity Type I":
+
+        recommendations.append(
+            "Focus on gradual and sustainable weight reduction with professional guidance if needed."
+        )
+
+    elif result == "Obesity Type II":
+
+        recommendations.append(
+            "Consult a healthcare professional for a comprehensive weight management strategy."
+        )
+
+    elif result == "Obesity Type III":
+
+        recommendations.append(
+            "Medical supervision is strongly recommended alongside nutrition and lifestyle interventions."
+        )
+
+    
+
+    for rec in recommendations:
+        st.info(f"- {rec}")
