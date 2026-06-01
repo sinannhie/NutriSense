@@ -151,4 +151,4 @@ Muhammed Sinan M
 
 Data Science & Machine Learning Enthusiast
 
-Email: [msinannhie007@gmail.com](mailto:msinannhie007@gmail.com)
+Email: [sinaaane007@gmail.com](mailto:sinaaane007@gmail.com)
