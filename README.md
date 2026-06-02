@@ -1,68 +1,104 @@
-# NutriSense-AI
+# 🥗 NutriSense
 
-## AI-Based Obesity Risk Prediction System
+### AI-Powered Obesity Prediction & Nutrition Analytics Platform
 
-NutriSense-AI is a machine learning project designed to predict obesity levels based on demographic characteristics, dietary habits, and lifestyle behaviors. The system leverages advanced machine learning algorithms to classify individuals into obesity categories and identify key health-related risk factors.
+NutriSense is an end-to-end Machine Learning and Health Analytics application designed to predict obesity levels and provide personalized nutrition insights based on demographic, lifestyle, and dietary factors.
 
----
-
-## Project Overview
-
-Obesity is a growing global health concern associated with various chronic diseases. Early identification of obesity risk can help individuals make informed lifestyle and nutritional decisions.
-
-This project analyzes health and lifestyle data to predict obesity categories using machine learning techniques and compares multiple classification algorithms to determine the most effective model.
+The platform combines predictive analytics, nutrition intelligence, and explainable AI to help users better understand their health profile and make informed lifestyle decisions.
 
 ---
 
-## Dataset Features
+# 🚀 Features
 
-The dataset includes:
+## 🤖 Obesity Prediction
+
+* Predicts 7 obesity categories
+* Powered by XGBoost Classifier
+* Confidence Score Generation
+* Personalized Health Recommendations
+
+## 🔥 Nutrition Analytics
+
+* BMI Calculator
+* BMR Calculator
+* TDEE Estimation
+* Daily Calorie Goals
+* Protein Intake Targets
+* Water Intake Recommendations
+
+## 📊 Explainable AI
+
+* SHAP Analysis Performed
+* Feature Importance Evaluation
+* Model Interpretability Insights
+
+## 📱 Multi-Page Application
+
+* Home Dashboard
+* Obesity Prediction
+* Nutrition Analytics
+* SHAP Explainability
+* About Project
+
+---
+
+# 📌 Project Overview
+
+Obesity is one of the most significant global health challenges worldwide.
+
+NutriSense uses machine learning techniques to analyze health and lifestyle data and classify individuals into obesity categories while providing actionable nutrition insights.
+
+The goal is not only prediction but also improving health awareness through personalized recommendations.
+
+---
+
+# 📊 Dataset Information
+
+Dataset Source:
+UCI Obesity Levels Dataset
+
+### Dataset Statistics
+
+| Attribute      | Value |
+| -------------- | ----- |
+| Samples        | 2111+ |
+| Features       | 16    |
+| Target Classes | 7     |
+
+### Key Features
 
 * Age
 * Gender
 * Height
 * Weight
-* Family history with overweight
-* Eating habits
-* Physical activity level
-* Water consumption
-* Technology usage habits
-* Transportation methods
-* Other lifestyle-related factors
-
-### Target Variable
-
-**NObeyesdad**
-
-Obesity Classification Categories:
-
-* Insufficient Weight
-* Normal Weight
-* Overweight Level I
-* Overweight Level II
-* Obesity Type I
-* Obesity Type II
-* Obesity Type III
+* Family History
+* Vegetable Consumption
+* Water Intake
+* Physical Activity
+* Transportation Mode
+* Smoking Habits
+* Alcohol Consumption
 
 ---
 
-## Machine Learning Workflow
+# 🤖 Machine Learning Pipeline
 
-### 1. Data Preprocessing
+### Data Preprocessing
 
 * Data Cleaning
-* Handling Categorical Variables
+* Missing Value Handling
 * Feature Encoding
 * Train-Test Split
-* Feature Scaling (Logistic Regression)
+* Feature Scaling
 
-### 2. Exploratory Data Analysis
+### Exploratory Data Analysis
 
 * Distribution Analysis
 * Correlation Analysis
-* Feature Relationship Exploration
+* Feature Relationships
+* Health Risk Exploration
 
-### 3. Model Development
+### Model Development
 
 Models Evaluated:
 
@@ -74,11 +110,11 @@ Models Evaluated:
 
 ---
 
-## Model Performance
+# 🏆 Model Performance
 
 | Model               | Accuracy |
 | ------------------- | -------- |
-| Logistic Regression | 87%      |
+| Logistic Regression | 87.00%   |
 | Random Forest       | 96.17%   |
 | Tuned Random Forest | 96.41%   |
 | XGBoost             | 96.65%   |
@@ -96,59 +132,83 @@ Performance:
 
 ---
 
-## Project Structure
+# 📂 Project Structure
 
 ```text
-NutriSense-AI/
+NutriSense/
 
-data/
+├── app.py
 │
-└── obesity_dataset.csv
-
-notebooks/
+├── pages/
+│   ├── Obesity Prediction
+│   ├── Nutrition Analytics
+│   ├── SHAP Explainability
+│   └── About Project
 │
-└── nutrisense_analysis_and_model_devolepment.ipynb
-
-models/
+├── models/
 │
-└── nutrisense_xgb_model.pkl
-
-README.md
-requirements.txt
-.gitignore
+├── data/
+│
+├── notebooks/
+│
+├── requirements.txt
+├── README.md
+└── .gitignore
 ```
 
 ---
 
-## Technologies Used
+# 🛠️ Technologies Used
+
+### Data Science
 
 * Python
 * Pandas
 * NumPy
-* Matplotlib
-* Seaborn
-* Scikit-learn
+
+### Machine Learning
+
+* Scikit-Learn
 * XGBoost
-* Jupyter Notebook
-* Joblib
+* SHAP
+
+### Visualization
+
+* Matplotlib
+
+### Application Development
+
+* Streamlit
 
 ---
 
-## Future Improvements
+# 🚀 Future Roadmap
 
-* SHAP Explainable AI
-* Streamlit Dashboard
-* BMI Calculator
-* BMR Calculator
-* Personalized Nutrition Recommendations
-* Obesity Risk Scoring System
+* Interactive SHAP Dashboard
+* Smart Food Recommendation System
+* Advanced Health Analytics
+* AI Health Assistant
+* PDF Health Reports
+* Weekly Progress Tracking
+* User Profiles
+* Cloud Deployment
 
 ---
 
-## Author
+# 👨‍💻 Author
 
-Muhammed Sinan M
+### Muhammed Sinan M
 
-Data Science & Machine Learning Enthusiast
+Data Science & Machine Learning Developer
 
-Email: [sinaaane007@gmail.com](mailto:sinaaane007@gmail.com)
+* Microsoft Data Science Certified
+* Cyber Square Calicut
+* BCA Graduate
+
+📧 Email: [sinaaane007@gmail.com](mailto:sinaaane007@gmail.com)
+
+---
+
+# ⭐ Acknowledgement
+
+This project was developed as part of an advanced Machine Learning and Health Analytics portfolio focused on predictive healthcare applications.

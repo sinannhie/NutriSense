@@ -1,9 +1,9 @@
-numpy
+streamlit
 pandas
+numpy
 matplotlib
-seaborn
 scikit-learn
 xgboost
 joblib
-jupyter
+shap
 scipy
