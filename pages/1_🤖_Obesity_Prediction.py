@@ -26,6 +26,16 @@ st.write(
 
 st.header("👤 Personal Information")
 
+
+client_name = st.text_input(
+    "Full Name",
+    placeholder="Enter your name"
+)
+
+client_email = st.text_input(
+    "Email (Optional)",
+    placeholder="example@email.com"
+)
 # Age & Gender 
 col1, col2 = st.columns(2)
 
@@ -294,6 +304,7 @@ if predict:
 
     result = obesity_labels[predicted_class]
     confidence = probabilities.max() * 100
+    
     # Store values for other pages
 
     st.session_state["age"] = age
@@ -309,6 +320,21 @@ if predict:
     st.session_state["ch2o"] = ch2o
 
     st.session_state["prediction"] = result
+    st.session_state["client_name"] = client_name
+    st.session_state["client_email"] = client_email
+    st.session_state["report_data"] = {
+    "client_name": client_name,
+    "age": age,
+    "gender": gender,
+    "height": height,
+    "weight": weight,
+    "prediction": result,
+    "confidence": float(confidence),
+    "bmi": bmi,
+    "bmr": bmr
+     }
+    confidence = float(confidence)
+    st.session_state["report_data"]["confidence"] = round(confidence, 2)
     st.header("📊 Prediction Results")
 
     col1, col2 = st.columns(2)

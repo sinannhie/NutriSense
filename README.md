@@ -1,16 +1,20 @@
-# 🥗 NutriSense
+# 🥗 NutriSense AI
 
 ### AI-Powered Obesity Prediction & Nutrition Analytics Platform
 
-NutriSense is an end-to-end Machine Learning and Health Analytics application designed to predict obesity levels and provide personalized nutrition insights based on demographic, lifestyle, and dietary factors.
+NutriSense AI is an end-to-end Machine Learning and Health Analytics platform designed to predict obesity levels and provide personalized nutrition insights based on demographic, lifestyle, and dietary factors.
 
-The platform combines predictive analytics, nutrition intelligence, and explainable AI to help users better understand their health profile and make informed lifestyle decisions.
+The platform combines predictive analytics, nutrition intelligence, interactive dashboards, PDF reporting, and explainable AI to help users better understand their health profile and make informed lifestyle decisions.
 
---- ## 🌐 Live Demo
+---
+
+## 🌐 Live Demo
+
+**NutriSense AI**
 
 https://nutrisense-analytics.streamlit.app/
 
-
+---
 
 # 🚀 Features
 
@@ -20,6 +24,7 @@ https://nutrisense-analytics.streamlit.app/
 * Powered by XGBoost Classifier
 * Confidence Score Generation
 * Personalized Health Recommendations
+* Real-Time Predictions
 
 ## 🔥 Nutrition Analytics
 
@@ -29,12 +34,27 @@ https://nutrisense-analytics.streamlit.app/
 * Daily Calorie Goals
 * Protein Intake Targets
 * Water Intake Recommendations
+* Health Score System
 
-## 📊 Explainable AI
+## 📊 Interactive Visual Analytics
 
-* SHAP Analysis Performed
+* Calorie Goal Comparison Charts
+* Nutrition Target Visualization
+* Health Metrics Dashboard
+* Interactive Plotly Visualizations
+
+## 🧠 Explainable AI
+
+* SHAP Analysis
 * Feature Importance Evaluation
 * Model Interpretability Insights
+
+## 📄 Health Reporting
+
+* Report Preview
+* Professional PDF Health Reports
+* Personalized Health Summary
+* Report ID Generation
 
 ## 📱 Multi-Page Application
 
@@ -50,15 +70,16 @@ https://nutrisense-analytics.streamlit.app/
 
 Obesity is one of the most significant global health challenges worldwide.
 
-NutriSense uses machine learning techniques to analyze health and lifestyle data and classify individuals into obesity categories while providing actionable nutrition insights.
+NutriSense AI uses machine learning techniques to analyze health and lifestyle data and classify individuals into obesity categories while providing actionable nutrition insights and health analytics.
 
-The goal is not only prediction but also improving health awareness through personalized recommendations.
+The objective is not only accurate prediction but also improving health awareness through personalized recommendations and data-driven insights.
 
 ---
 
 # 📊 Dataset Information
 
-Dataset Source:
+### Dataset Source
+
 UCI Obesity Levels Dataset
 
 ### Dataset Statistics
@@ -83,11 +104,25 @@ UCI Obesity Levels Dataset
 * Smoking Habits
 * Alcohol Consumption
 
+### Target Variable
+
+**NObeyesdad**
+
+Classification Categories:
+
+* Insufficient Weight
+* Normal Weight
+* Overweight Level I
+* Overweight Level II
+* Obesity Type I
+* Obesity Type II
+* Obesity Type III
+
 ---
 
 # 🤖 Machine Learning Pipeline
 
-### Data Preprocessing
+## Data Preprocessing
 
 * Data Cleaning
 * Missing Value Handling
@@ -95,14 +130,14 @@ UCI Obesity Levels Dataset
 * Train-Test Split
 * Feature Scaling
 
-### Exploratory Data Analysis
+## Exploratory Data Analysis
 
 * Distribution Analysis
 * Correlation Analysis
 * Feature Relationships
 * Health Risk Exploration
 
-### Model Development
+## Model Development
 
 Models Evaluated:
 
@@ -150,9 +185,7 @@ NutriSense/
 │   └── About Project
 │
 ├── models/
-│
 ├── data/
-│
 ├── notebooks/
 │
 ├── requirements.txt
@@ -164,44 +197,49 @@ NutriSense/
 
 # 🛠️ Technologies Used
 
-### Data Science
+## Data Science
 
 * Python
 * Pandas
 * NumPy
 
-### Machine Learning
+## Machine Learning
 
 * Scikit-Learn
 * XGBoost
 * SHAP
 
-### Visualization
+## Visualization
 
+* Plotly
 * Matplotlib
 
-### Application Development
+## Application Development
 
 * Streamlit
+
+## Reporting
+
+* ReportLab
 
 ---
 
 # 🚀 Future Roadmap
 
-* Interactive SHAP Dashboard
 * Smart Food Recommendation System
-* Advanced Health Analytics
-* AI Health Assistant
-* PDF Health Reports
 * Weekly Progress Tracking
 * User Profiles
-* Cloud Deployment
+* User History Tracking
+* Database Integration
+* AI Health Assistant
+* Advanced Health Analytics
+* Mobile Optimization
 
 ---
 
 # 👨‍💻 Author
 
-### Muhammed Sinan M
+## Muhammed Sinan M
 
 Data Science & Machine Learning Developer
 
@@ -209,10 +247,10 @@ Data Science & Machine Learning Developer
 * Cyber Square Calicut
 * BCA Graduate
 
-📧 Email: [sinaaane007@gmail.com](mailto:sinaaane007@gmail.com)
+📧 Email: [msinannhie007@gmail.com](mailto:msinannhie007@gmail.com)
 
 ---
 
 # ⭐ Acknowledgement
 
-This project was developed as part of an advanced Machine Learning and Health Analytics portfolio focused on predictive healthcare applications.
+This project was developed as an advanced Machine Learning and Health Analytics portfolio project focused on predictive healthcare applications, explainable AI, and personalized nutrition intelligence.
