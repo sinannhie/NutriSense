@@ -6,7 +6,11 @@ NutriSense is an end-to-end Machine Learning and Health Analytics application de
 
 The platform combines predictive analytics, nutrition intelligence, and explainable AI to help users better understand their health profile and make informed lifestyle decisions.
 
----
+--- ## 🌐 Live Demo
+
+https://nutrisense-analytics.streamlit.app/
+
+
 
 # 🚀 Features
 
