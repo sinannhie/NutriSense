@@ -342,8 +342,74 @@ with col3:
     </div>
     """, unsafe_allow_html=True)
 
+## Health profioe charttt
+import plotly.express as px
+import pandas as pd
 
+st.markdown("---")
 
+st.subheader("🩺 Health Profile Overview")
+
+# Scores
+
+bmi_score = 100 if 18.5 <= bmi <= 24.9 else 60
+
+activity_score = {
+    "Sedentary": 50,
+    "Lightly Active": 75,
+    "Moderately Active": 90,
+    "Very Active": 100
+}.get(activity_level, 50)
+
+hydration_score = min(
+    int((water_target / 3) * 100),
+    100
+)
+
+nutrition_score = min(
+    int((protein_target / 120) * 100),
+    100
+)
+
+health_df = pd.DataFrame({
+    "Metric": [
+        "BMI Health",
+        "Activity",
+        "Hydration",
+        "Nutrition"
+    ],
+    "Score": [
+        bmi_score,
+        activity_score,
+        hydration_score,
+        nutrition_score
+    ]
+})
+
+fig = px.bar(
+    health_df,
+    x="Metric",
+    y="Score",
+    text="Score",
+    color="Score",
+    color_continuous_scale="Viridis"
+)
+
+fig.update_layout(
+    height=350,
+    showlegend=False,
+    coloraxis_showscale=False,
+    margin=dict(l=20,r=20,t=20,b=20)
+)
+
+fig.update_traces(
+    textposition="outside"
+)
+
+st.plotly_chart(
+    fig,
+    use_container_width=True
+)
 # --- Section 2: Calorie Goals ---
 
 st.subheader("🎯 Calorie Goals")
@@ -384,66 +450,41 @@ with col3:
     </div>
     """, unsafe_allow_html=True)
 
-    import plotly.graph_objects as go
 
 st.markdown("---")
+
 st.subheader("📊 Calorie Goal Comparison")
-st.caption(
-    "Compare daily calorie targets for weight loss, maintenance and muscle gain."
-)
 
-fig = go.Figure()
-
-fig.add_bar(
-    y=[
-        "📈 Muscle Gain",
-        "⚖️ Maintenance",
-        "📉 Fat Loss"
+calorie_df = pd.DataFrame({
+    "Goal": [
+        "Fat Loss",
+        "Maintenance",
+        "Muscle Gain"
     ],
-    x=[
-        muscle_gain_calories,
+    "Calories": [
+        fat_loss_calories,
         maintenance_calories,
-        fat_loss_calories
-    ],
+        muscle_gain_calories
+    ]
+})
+
+fig = px.bar(
+    calorie_df,
+    y="Goal",
+    x="Calories",
     orientation="h",
-
-    text=[
-        f"▲ {muscle_gain_calories:.0f} kcal",
-        f"➖ {maintenance_calories:.0f} kcal",
-        f"▼ {fat_loss_calories:.0f} kcal"
-    ],
-
-    textposition="inside",
-
-    marker=dict(
-        color=[
-            "#22c55e",  # Green
-            "#3b82f6",  # Blue
-            "#ef4444"   # Red
-        ]
-    ),
-
-    hovertemplate=
-    "<b>%{y}</b><br>" +
-    "Calories: %{x} kcal/day" +
-    "<extra></extra>"
+    text="Calories",
+    color="Goal"
 )
 
 fig.update_layout(
-    height=280,
+    height=350,
     showlegend=False,
+    margin=dict(l=20,r=20,t=20,b=20)
+)
 
-    margin=dict(
-        l=20,
-        r=20,
-        t=20,
-        b=20
-    ),
-
-    xaxis_title="Daily Calories (kcal)",
-
-    plot_bgcolor="white",
-    paper_bgcolor="white"
+fig.update_traces(
+    textposition="outside"
 )
 
 st.plotly_chart(
@@ -451,6 +492,7 @@ st.plotly_chart(
     use_container_width=True
 )
 
+st.markdown("---")
 
 # --- Section 3: Nutrition Targets ---
 st.subheader("🥗 Daily Nutrition Targets")
@@ -480,53 +522,6 @@ with col2:
     """, unsafe_allow_html=True)
 
 ## visualo
-st.markdown("---")
-st.subheader("🥗 Nutrition Targets Overview")
-
-import plotly.graph_objects as go
-
-fig = go.Figure()
-
-fig.add_bar(
-    y=[
-        "🍗 Protein (g)",
-        "💧 Water (L)"
-    ],
-
-    x=[
-        protein_target,
-        water_target
-    ],
-
-    orientation="h",
-
-    text=[
-        f"{protein_target} g",
-        f"{water_target} L"
-    ],
-
-    textposition="inside",
-
-    marker=dict(
-        color=[
-            "#22c55e",
-            "#0ea5e9"
-        ]
-    )
-)
-
-fig.update_layout(
-    height=220,
-    showlegend=False,
-    margin=dict(l=20, r=20, t=20, b=20),
-    plot_bgcolor="white",
-    paper_bgcolor="white"
-)
-
-st.plotly_chart(
-    fig,
-    use_container_width=True
-)
 
 # REPORT PREVIEW + PDF GENERATION
 
@@ -555,68 +550,6 @@ if "report_data" in st.session_state:
 
 
 
-st.markdown("---")
-
-st.header("📄 Health Report Preview")
-
-show_preview = st.button(
-    "📄 Preview Health Report",
-    use_container_width=True
-)
-
-if show_preview:
-
-    report = st.session_state.get("report_data", {})
-
-    col1, col2 = st.columns(2)
-
-    with col1:
-
-        st.metric(
-            "👤 Client",
-            report.get("client_name", "N/A")
-        )
-
-        st.metric(
-            "⚖️ BMI",
-            f"{float(report.get('bmi',0)):.2f}"
-        )
-
-        st.metric(
-            "🔥 BMR",
-            f"{round(float(report.get('bmr',0)))} kcal"
-        )
-
-        st.metric(
-            "💧 Water Target",
-            f"{float(report.get('water_target',0)):.1f} L/day"
-        )
-
-    with col2:
-
-        st.metric(
-            "🎯 Prediction",
-            report.get("prediction", "N/A")
-        )
-
-        st.metric(
-            "⚡ TDEE",
-            f"{round(float(report.get('tdee',0)))} kcal"
-        )
-
-        st.metric(
-            "🥩 Protein Target",
-            f"{round(float(report.get('protein_target',0)))} g/day"
-        )
-
-        st.metric(
-            "🎯 Confidence",
-            f"{float(report.get('confidence',0)):.2f}%"
-        )
-
-    st.caption(
-        f"Report ID: {report.get('report_id','N/A')}"
-    )
 
 
 # ==========================
@@ -1007,6 +940,7 @@ def create_pdf(report):
 # ==========================
 # DOWNLOAD
 # ==========================
+st.markdown("---")
 
 st.subheader("📥 Download Health Report")
 

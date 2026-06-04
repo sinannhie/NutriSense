@@ -7,18 +7,35 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("🥗 NutriSense")
 
-st.subheader(
-    "AI-Powered Obesity Prediction & Nutrition Analytics Platform"
-)
 
-st.info(
-    """
-    Predict obesity risk, analyze nutrition metrics,
-    and receive personalized health recommendations.
-    """
-)
+st.markdown("""
+<div style="
+padding:40px;
+border-radius:20px;
+background:linear-gradient(
+135deg,
+#0f172a,
+#1e293b
+);
+color:white;
+">
+
+<h1>🥗 NutriSense AI</h1>
+
+<h3>
+AI-Powered Obesity Prediction &
+Nutrition Analytics Platform
+</h3>
+
+<p style="font-size:18px;">
+Predict obesity risk, analyze health metrics,
+and generate personalized nutrition reports
+using Machine Learning and Explainable AI.
+</p>
+
+</div>
+""", unsafe_allow_html=True)
 
 st.markdown("---")
 
@@ -60,24 +77,81 @@ with col2:
 
 st.markdown("---")
 
-st.header("📌 Platform Modules")
+st.header("✨ Key Features")
 
-col1, col2, col3, col4 = st.columns(4)
+col1,col2,col3 = st.columns(3)
 
 with col1:
-    st.metric("Prediction", "XGBoost")
+    st.info("""
+### 🤖 AI Prediction
+
+Predict obesity levels using
+an XGBoost machine learning model.
+""")
 
 with col2:
-    st.metric("Nutrition", "BMI • BMR • TDEE")
+    st.info("""
+### 📊 Nutrition Analytics
+
+BMI, BMR, TDEE,
+calorie and hydration targets.
+""")
 
 with col3:
-    st.metric("Explainability", "SHAP")
+    st.info("""
+### 📄 PDF Reports
+
+Generate downloadable
+health assessment reports.
+""")
+
+st.header("📊 Platform Overview")
+
+col1,col2,col3,col4 = st.columns(4)
+
+with col1:
+    st.metric(
+        "🎯 Accuracy",
+        "96.65%"
+    )
+
+with col2:
+    st.metric(
+        "📂 Dataset",
+        "2111+"
+    )
+
+with col3:
+    st.metric(
+        "🏷 Classes",
+        "7"
+    )
 
 with col4:
-    st.metric("Insights", "Personalized")
+    st.metric(
+        "🧠 Explainability",
+        "SHAP"
+    )
+
+st.header("🏆 Model Performance")
+
+col1,col2 = st.columns(2)
+
+with col1:
+    st.metric("Accuracy","96.65%")
+
+with col2:
+    st.metric("Macro F1","0.97")
+
 
 st.markdown("---")
 
 st.caption(
-    "NutriSense v1.0 • Developed by Muhammed Sinan M"
+"""
+NutriSense AI v1.0 |
+Machine Learning • Nutrition Analytics • Explainable AI
+
+Developed by Muhammed Sinan M
+"""
 )
+

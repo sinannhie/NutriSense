@@ -4,63 +4,126 @@ st.set_page_config(
     page_icon="🥗",
     layout="wide"
 )
-st.header("🤖 Model Perspective")
-
-st.write("""
-The SHAP analysis identified the following features as having the strongest influence on obesity prediction:
-""")
 
 st.markdown("""
-### Top Features Identified by SHAP
+<div class="summary-card">
+<h2>🤖 Explainable AI Dashboard</h2>
 
-🥇 Weight
+<p>
+Understand which factors influence obesity prediction
+and how the XGBoost model makes decisions.
+</p>
 
-🥈 Height
+</div>
+""", unsafe_allow_html=True)
 
-🥉 Physical Activity (FAF)
+### datta for chart
 
-4️⃣ Vegetable Consumption (FCVC)
+import pandas as pd
+import plotly.express as px
 
-5️⃣ Eating Between Meals (CAEC)
+feature_df = pd.DataFrame({
+    "Feature":[
+        "Weight",
+        "Height",
+        "Physical Activity",
+        "Vegetable Consumption",
+        "Eating Between Meals",
+        "Age",
+        "Technology Usage",
+        "Family History",
+        "Alcohol Consumption"
+    ],
+    "Importance":[
+        100,
+        85,
+        70,
+        55,
+        45,
+        35,
+        25,
+        20,
+        15
+    ]
+})
 
-6️⃣ Age
+fig = px.bar(
+    feature_df,
+    x="Importance",
+    y="Feature",
+    orientation="h",
+    color="Importance",
+    color_continuous_scale="Viridis"
+)
 
-7️⃣ Technology Usage (TUE)
+fig.update_layout(
+    height=500,
+    yaxis=dict(categoryorder="total ascending"),
+    coloraxis_showscale=False
+)
 
-8️⃣ Family History of Overweight
+st.plotly_chart(
+    fig,
+    use_container_width=True
+)
+st.info("""
+### 🤖 Model Perspective
 
-9️⃣ Alcohol Consumption (CALC)
-""")
+The machine learning model identified Weight and Height as the strongest predictors.
 
-st.header("❤️ Health Perspective")
-
-st.success("""
-While Weight and Height are the strongest statistical predictors, they are not the root causes of obesity.
-
-From a health and lifestyle perspective, the most actionable factors include:
+Additional influential features include:
 
 • Physical Activity
-• Eating Habits
+
 • Vegetable Consumption
+
+• Eating Between Meals
+
+• Age
+
+• Family History
+
+These variables contributed most strongly to the model's classification decisions.
+""")
+
+
+st.success("""
+### ❤️ Health Perspective
+
+While Weight and Height are important predictors,
+they are outcomes rather than root causes.
+
+The most actionable health factors are:
+
+• Physical Activity
+
+• Healthy Eating Habits
+
+• Vegetable Consumption
+
 • Water Intake
-• Family History Awareness
-• Healthy Lifestyle Choices
 
-These are the factors individuals can actively improve to support long-term health outcomes.
+• Lifestyle Choices
+
+Improving these behaviors can significantly influence long-term health outcomes.
 """)
 
+with st.expander("ℹ️ Why Explainability Matters"):
+    st.write("""
+    SHAP (SHapley Additive Explanations) helps explain
+    how machine learning models make predictions.
 
-st.header("🎯 Why Explainability Matters")
+    Instead of acting as a black box,
+    SHAP highlights which features influence decisions.
 
-st.write("""
-Traditional machine learning models often act as 'black boxes'.
+    Benefits:
 
-SHAP helps make predictions transparent by identifying which features contribute most to the model's decisions.
+    • Transparency
 
-This improves:
+    • Trust
 
-• Trust
-• Transparency
-• Interpretability
-• Responsible AI Practices
-""")
+    • Interpretability
+
+    • Responsible AI
+    """)
+

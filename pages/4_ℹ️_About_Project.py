@@ -64,13 +64,33 @@ st.markdown("""
         
         /* Developer card */
         .developer-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            margin: 2rem 0;
+         background: linear-gradient(135deg,#667eea,#764ba2);
+         color:white;
+         padding:30px;
+         border-radius:20px;
+         box-shadow:0 10px 25px rgba(0,0,0,0.15);
+         margin:20px 0;
         }
+        .developer-card a{
+         color:white;
+         text-decoration:none;
+         font-weight:600;
+         }
+
+        .developer-card a:hover{
+         text-decoration:underline;
+         }
+        
+        .block-container{
+         padding-top:2rem;
+         padding-bottom:2rem;
+           }
+
+         .section-header{
+          margin-top:1rem !important;
+          margin-bottom:1rem !important;
+        }
+        
     </style>
 """, unsafe_allow_html=True)
 
@@ -93,40 +113,52 @@ st.markdown("""
 # =========================
 # PROJECT OVERVIEW
 # =========================
-st.markdown('<h2 class="section-header">📋 Project Overview</h2>', unsafe_allow_html=True)
-
-col1, col2 = st.columns([1, 1], gap="medium")
+col1, col2 = st.columns(2)
 
 with col1:
     st.markdown("""
-    **What is NutriSense?**
-    
-    An intelligent health analytics platform that combines machine learning with nutrition science 
-    to help users make informed dietary decisions.
+    **What is NutriSense AI?**
+
+    NutriSense AI is an intelligent health analytics platform that combines
+    Machine Learning, Explainable AI, and Nutrition Intelligence to predict
+    obesity levels and generate personalized health insights.
+
+    The platform goes beyond prediction by providing nutrition analytics,
+    health scoring, interactive visualizations, and professional PDF health reports.
     """)
 
 with col2:
     st.markdown("""
     **Key Benefits:**
-    
-    🔍 Predict obesity risk levels with high accuracy  
-    📊 Calculate personalized nutrition metrics  
-    💡 Get actionable health recommendations  
-    🎯 Track progress towards health goals
-    """)
 
+    🔍 Predict obesity risk with high accuracy
+
+    📊 Analyze health and nutrition metrics
+
+    🧠 Understand model decisions using SHAP
+
+    📄 Generate personalized health reports
+
+    🎯 Support healthier lifestyle decisions
+    """)
 # =========================
 # MODEL PERFORMANCE
 # =========================
-st.markdown('<h2 class="section-header">📈 Model Performance</h2>', unsafe_allow_html=True)
 
-perf_col1, perf_col2, perf_col3, perf_col4 = st.columns(4, gap="large")
+st.markdown(
+    '<h2 class="section-header">📈 Model Performance</h2>',
+    unsafe_allow_html=True
+)
 
+perf_col1, perf_col2, perf_col3, perf_col4 = st.columns(
+    4,
+    gap="large"
+)
 metrics_data = [
-    ("Accuracy", "~96%", "🎯"),
+    ("Accuracy", "96.65%", "🎯"),
     ("Algorithm", "XGBoost", "⚙️"),
     ("Classes", "7", "📊"),
-    ("Features", "16", "🔍")
+    ("Samples", "2111+", "📂")
 ]
 
 for col, (label, value, emoji) in zip([perf_col1, perf_col2, perf_col3, perf_col4], metrics_data):
@@ -185,20 +217,19 @@ col1, col2 = st.columns(2, gap="large")
 
 core_features = [
     "✅ Obesity Level Prediction",
-    "✅ BMI Calculator",
-    "✅ BMR (Basal Metabolic Rate) Calculation",
-    "✅ TDEE (Total Daily Energy Expenditure) Estimation",
-    "✅ Personalized Health Recommendations"
+    "✅ Confidence Score Generation",
+    "✅ Personalized Health Insights",
+    "✅ SHAP Explainability Dashboard",
+    "✅ Health Score System"
 ]
 
 analytics_features = [
     "✅ Nutrition Analytics Dashboard",
-    "✅ Water Intake Tracking & Targets",
-    "✅ Protein Goal Calculator",
-    "✅ Session State Management",
+    "✅ Interactive Plotly Visualizations",
+    "✅ PDF Health Report Generation",
+    "✅ Session State Integration",
     "✅ Multi-Page Architecture"
 ]
-
 with col1:
     st.markdown("**🎯 Core Prediction Features**")
     for feature in core_features:
@@ -217,11 +248,36 @@ with col2:
 st.markdown('<h2 class="section-header">🏆 Key Achievements</h2>', unsafe_allow_html=True)
 
 achievements = [
-    ("🎯", "96% Prediction Accuracy", "Leveraging XGBoost for high-precision obesity classification"),
-    ("📊", "SHAP Explainability Analysis", "Complete model interpretability and feature importance analysis"),
-    ("🔥", "Nutrition Analytics Dashboard", "Integrated tracking system with real-time calculations"),
-    ("🔄", "Session State Communication", "Seamless data flow between application pages"),
-    ("📱", "Professional UI/UX", "Multi-page Streamlit application with responsive design")
+    (
+        "🎯",
+        "96.65% Prediction Accuracy",
+        "High-performance obesity classification using XGBoost"
+    ),
+    (
+        "🧠",
+        "SHAP Explainability Dashboard",
+        "Transparent and interpretable machine learning predictions"
+    ),
+    (
+        "🔥",
+        "Nutrition Analytics Engine",
+        "BMI, BMR, TDEE and health score calculations"
+    ),
+    (
+        "📊",
+        "Interactive Plotly Visualizations",
+        "Professional analytics dashboard experience"
+    ),
+    (
+        "📄",
+        "Professional PDF Reports",
+        "Personalized downloadable health reports"
+    ),
+    (
+        "☁️",
+        "Cloud Deployment",
+        "Successfully deployed on Streamlit Community Cloud"
+    )
 ]
 
 for emoji, title, description in achievements:
@@ -242,16 +298,47 @@ for emoji, title, description in achievements:
 st.markdown('<h2 class="section-header">🚀 Future Roadmap</h2>', unsafe_allow_html=True)
 
 roadmap_items = [
-    ("📊", "Interactive SHAP Dashboard", "Advanced model explainability visualization"),
-    ("🍽️", "Smart Food Recommendation System", "AI-powered personalized meal suggestions"),
-    ("📈", "Advanced Health Analytics", "Trend analysis and predictive insights"),
-    ("🤖", "AI Health Assistant", "Conversational AI for health guidance"),
-    ("📄", "PDF Health Reports", "Generate personalized health summary reports"),
-    ("📅", "Weekly Progress Tracking", "Monitor health metrics over time"),
-    ("👤", "User Profiles", "Personalized user accounts and preferences"),
-    ("☁️", "Cloud Deployment", "Scale to production environment")
+    (
+        "🍽️",
+        "Food Recommendation Engine",
+        "AI-powered personalized nutrition suggestions"
+    ),
+    (
+        "📈",
+        "Weekly Health Tracking",
+        "Monitor long-term health trends"
+    ),
+    (
+        "👤",
+        "User Profiles",
+        "Personalized health dashboards"
+    ),
+    (
+        "🗄️",
+        "Database Integration",
+        "Store reports and historical analytics"
+    ),
+    (
+        "🤖",
+        "AI Health Assistant",
+        "Conversational health guidance"
+    ),
+    (
+        "📊",
+        "Advanced Health Analytics",
+        "More detailed predictive insights"
+    ),
+    (
+        "📱",
+        "Mobile Optimization",
+        "Enhanced mobile experience"
+    ),
+    (
+        "🔔",
+        "Smart Notifications",
+        "Personalized health reminders"
+    )
 ]
-
 col1, col2 = st.columns(2, gap="medium")
 
 for i, (emoji, title, description) in enumerate(roadmap_items):
@@ -269,27 +356,70 @@ for i, (emoji, title, description) in enumerate(roadmap_items):
 
 # =========================
 # DEVELOPER
+# ===============
 # =========================
-st.markdown('<h2 class="section-header">👨‍💻 Developer</h2>', unsafe_allow_html=True)
+# DEVELOPER
+# =========================
+
+st.markdown(
+    '<h2 class="section-header">👨‍💻 Developer</h2>',
+    unsafe_allow_html=True
+)
 
 st.markdown("""
-    <div class="developer-card">
-        <h3 style="margin: 0; font-size: 1.8rem;">Muhammed Sinan M</h3>
-        <p style="margin: 0.5rem 0; font-size: 1rem; opacity: 0.95;">
-            Data Science & Machine Learning Developer
-        </p>
-        <hr style="border: 1px solid rgba(255,255,255,0.3); margin: 1rem 0;">
-        <div style="text-align: left; margin: 1rem 0;">
-            <p style="margin: 0.3rem 0;">🏆 Microsoft Data Science Certified</p>
-            <p style="margin: 0.3rem 0;">🎓 BCA Graduate</p>
-            <p style="margin: 0.3rem 0;">🏢 Cyber Square Calicut</p>
-        </div>
-        <p style="margin: 1rem 0 0 0; font-size: 0.95rem; opacity: 0.9;">
-            <strong>NutriSense v1.0</strong>
-        </p>
-    </div>
-""", unsafe_allow_html=True)
+<div class="developer-card">
 
+<h2 style="margin-bottom:5px;">
+👨‍💻 Muhammed Sinan M
+</h2>
+
+<p style="font-size:18px; margin-top:0;">
+Data Science & Machine Learning Developer
+</p>
+
+<hr style="border:1px solid rgba(255,255,255,0.3);">
+
+<p>🏆 Microsoft Data Science Certified</p>
+
+<p>🎓 BCA Graduate</p>
+
+<p>🏢 Cyber Square Calicut</p>
+
+<p>🤖 Machine Learning & AI Enthusiast</p>
+
+<p>📧 msinannhie007@gmail.com</p>
+
+<p>
+💻 <a href="https://github.com/sinannhie"
+target="_blank">
+GitHub Profile
+</a>
+</p>
+
+<p>
+🔗 <a href="https://www.linkedin.com/in/sinannhie14/"
+target="_blank">
+LinkedIn Profile
+</a>
+</p>
+
+<br>
+
+<h4 style="margin-bottom:5px;">
+🚀 NutriSense AI v1.0
+</h4>
+
+<p style="margin-top:0;">
+AI-Powered Health Analytics Platform
+</p>
+
+<p style="font-size:14px;opacity:0.9;">
+Built using Python, Streamlit, XGBoost, SHAP,
+Plotly and ReportLab
+</p>
+
+</div>
+""", unsafe_allow_html=True)
 # =========================
 # GITHUB & FOOTER
 # =========================
